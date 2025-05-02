@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ESLint: Verificar arquivos do projeto",
+      "type": "shell",
+      "command": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": "$eslint-stylish"
+    }
+  ]
+}
