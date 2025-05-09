@@ -4,7 +4,24 @@ import { Button } from "@/components/ui";
 import Image from "next/image";
 import { dummyInterviews } from "@/constants";
 import InterviewCard from "@/components/InterviewCard";
-const page = () => {
+import {
+  getCurrentUser,
+  getInterviewsByUserId,
+  getLatestInterviews,
+} from "@/lib/actions/auth.action";
+
+const Page = async () => {
+  const user = await getCurrentUser();
+  const [userInterviews, latestInterviews] = await Promise.all([
+    getInterviewsByUserId(user?.id!),
+    getLatestInterviews({
+      userId: user?.id!,
+    }),
+  ]);
+
+  const hasPastInterviews = userInterviews?.length! > 0;
+  const hasUpcomingInterviews = latestInterviews?.length! > 0;
+
   return (
     <>
       <section className="card-cta">
@@ -33,23 +50,30 @@ const page = () => {
       <section className="flex flex-col gap-6 mt-8">
         <h2>Suas entrevistas</h2>
         <div className="interviews-section">
-          {dummyInterviews.map((interview) => (
-            <InterviewCard key={interview.id} {...interview} />
-          ))}
-          {/* <p>Você ainda não aplicou para nenhuma entrevista</p> */}
+          {hasPastInterviews ? (
+            userInterviews?.map((interview) => (
+              <InterviewCard key={interview.id} {...interview} />
+            ))
+          ) : (
+            <p>Você ainda não aplicou para nenhuma entrevista</p>
+          )}
         </div>
       </section>
 
       <section className="flex flex-col gap-6 mt-8">
         <h2>Comece uma entrevista</h2>
         <div className="interviews-section">
-          {dummyInterviews.map((interview) => (
-            <InterviewCard key={interview.id} {...interview} />
-          ))}
+          {hasUpcomingInterviews ? (
+            latestInterviews?.map((interview) => (
+              <InterviewCard key={interview.id} {...interview} />
+            ))
+          ) : (
+            <p>Não há nenhuma entrevista disponível</p>
+          )}
         </div>
       </section>
     </>
   );
 };
 
-export default page;
+export default Page;

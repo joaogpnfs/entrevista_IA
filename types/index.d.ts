@@ -33,7 +33,7 @@ interface CreateFeedbackParams {
 }
 
 interface User {
-  name: string;
+  username: string;
   email: string;
   id: string;
 }
@@ -48,7 +48,7 @@ interface InterviewCardProps {
 }
 
 interface AgentProps {
-  userName: string;
+  username: string;
   userId?: string;
   interviewId?: string;
   feedbackId?: string;
