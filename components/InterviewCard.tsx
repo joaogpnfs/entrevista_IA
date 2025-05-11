@@ -22,7 +22,13 @@ const InterviewCard = async ({
         })
       : null;
 
-  const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
+  const normalizedType = /mix/gi.test(type)
+    ? "Mista"
+    : type === "Technical"
+      ? "Técnica"
+      : type === "Behavioral"
+        ? "Comportamental"
+        : type;
   const formattedDate = dayjs(
     feedback?.createdAt || createdAt || Date.now(),
   ).format("DD/MM/YYYY");

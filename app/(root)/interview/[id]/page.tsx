@@ -31,7 +31,13 @@ const page = async ({ params }: RouteParams) => {
           <DisplayTechIcons techStack={interview.techstack} />
         </div>
         <p className="bg-dark-200 px-4 py-2 rounded-lg h-fit capitalize">
-          {interview.type}
+          {interview.type === "Technical"
+            ? "Técnica"
+            : interview.type === "Behavioral"
+              ? "Comportamental"
+              : /mix/gi.test(interview.type)
+                ? "Mista"
+                : interview.type}
         </p>
       </div>
       <Agent
