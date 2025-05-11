@@ -26,14 +26,14 @@ const Page = async () => {
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
           <h2>
-            Fique pronto para entrevistas com ajuda de Inteligência Artificial e
-            feedbacks personalizados
+            Fique pronto para entrevistas internacionais com ajuda de
+            Inteligência Artificial e feedbacks personalizados
           </h2>
           <p className="text-lg">
             Pratique com perguntas reais e receba feedback instantâneos.
           </p>
           <Button asChild className="btn-primary max-sm:w-full">
-            <Link href="/interview">Comece uma entrevista</Link>
+            <Link href="/interview">Gerar uma entrevista agora</Link>
           </Button>
         </div>
 
