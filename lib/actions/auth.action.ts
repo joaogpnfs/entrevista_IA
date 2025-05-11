@@ -13,7 +13,7 @@ export async function signUp(params: SignUpParams) {
 
     if (userRecord.exists) {
       return {
-        sucess: false,
+        success: false,
         message: "Usuário já existe",
       };
     }
@@ -24,7 +24,7 @@ export async function signUp(params: SignUpParams) {
     });
 
     return {
-      sucess: true,
+      success: true,
       message: "Usuário criado com sucesso. Por favor, faça login. 🚀",
     };
   } catch (error: any) {
@@ -32,13 +32,13 @@ export async function signUp(params: SignUpParams) {
 
     if (error.code === "auth/email-already-exists") {
       return {
-        sucess: false,
+        success: false,
         message: " Email já está em uso",
       };
     }
 
     return {
-      sucess: false,
+      success: false,
       message: "Erro ao criar usuário",
     };
   }
@@ -68,7 +68,7 @@ export async function signIn(params: SignInParams) {
 
     if (!userRecord) {
       return {
-        sucess: false,
+        success: false,
         message: "Usuário não encontrado. Crie uma conta.",
       };
     }
@@ -76,7 +76,7 @@ export async function signIn(params: SignInParams) {
   } catch (error) {
     console.log(error);
     return {
-      sucess: false,
+      success: false,
       message: "Erro ao fazer login",
     };
   }
