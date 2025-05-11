@@ -24,9 +24,9 @@ const InterviewCard = async ({
 
   const normalizedType = /mix/gi.test(type)
     ? "Mista"
-    : type === "Technical"
+    : type === "technical"
       ? "Técnica"
-      : type === "Behavioral"
+      : type === "behavioral"
         ? "Comportamental"
         : type;
   const formattedDate = dayjs(
